@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event In Js</title>
+  </head>
+  <style>
+    * {
+      padding: 0%;
+      margin: 0%;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      width: 100%;
+      /* background-color: aqua; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .light {
+      height: 200px;
+      width: 200px;
+      border: 2px solid black;
+      border-radius: 50%;
+      background-color: rgb(220, 253, 4);
+    }
+
+    button {
+      width: 100px;
+      height: 20px;
+      margin-top: 300px;
+      margin-left: -150px;
+    }
+  </style>
+  <body>
+    <div class="light"></div>
+    <button>ON</button>
+    <!-- <button>OFF</button> -->
+  </body>
+
+  <script>
+    var btn = document.querySelector("button");
+    var light = document.querySelector(".light");
+    var flag = 0;
+    btn.addEventListener("click", function () {
+      if (flag == 0) {
+        light.style.backgroundColor = "red";
+        btn.innerHTML = "OFF";
+        flag = 1;
+      } else {
+        light.style.backgroundColor = "yellow";
+        btn.innerHTML = "ON";
+        flag = 0;
+      }
+    });
+
+    // n.innerHTML ="hello";
+    // n.style.color="red";
+    // n.style.backgroundColor="yellow"
+  </script>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Ganerator</title>
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+      body {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-image: linear-gradient(to right, #ff0000, #ffffff);
+      }
+
+      #btn1 {
+        text-align: center;
+        border-radius: 20px;
+
+        margin-right: 90px;
+        height: 30px;
+        width: 150px;
+        background-color: #fd054f;
+      }
+
+      #btn1:hover {
+        box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.5);
+      }
+      #btn2 {
+        border-radius: 20px;
+        margin-left: 5px;
+        text-align: center;
+        height: 30px;
+        width: 150px;
+        background-color: #faebd7;
+      }
+
+      #btn2:hover {
+        box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.5);
+      }
+
+      h2 {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .copyCode {
+        background-color: transparent;
+        border: 2px solid white;
+        border-radius: 10px;
+        /* border: 2px solid rgba(255, 255,255,0.5); */
+        padding: 20px;
+        margin-top: 20px;
+        text-align: center;
+        font-size: medium;
+        font-weight: 100px;
+        width: 400px;
+        /* max-width: 500px; */
+      }
+
+      @media (max-width:600px) {
+        #btn1{
+        text-align: center;
+        border-radius: 20px;
+
+        margin-left: 30%;
+        margin-bottom: 10%;
+        height: 5vh;
+        width: 40vw;
+        background-color: #fd054f;
+        }
+
+        #btn2{
+          border-radius: 20px;
+         
+        margin-left: 30%;
+        text-align: center;
+        height: 5vh;
+        width: 40vw;
+        background-color: #faebd7;
+        }
+
+        .copyCode {
+        background-color: transparent;
+        border: 2px solid rgb(255, 255, 255);
+        border-radius: 10px;
+        /* border: 2px solid rgba(255, 255,255,0.5); */
+        padding: 2%;
+        margin: 0 50% 50% 10%;
+        
+        text-align: center;
+        color: rgb(27, 27, 29);
+        font-size: large;
+        font-weight: 20px;
+        width: 80vw;
+        /* max-width: 500px; */
+      }
+
+      h2 {
+        margin-bottom: 30px;
+        text-align: center;
+        color: rgb(0, 0, 0);
+      }
+        
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <button id="btn1">#ff0000</button>
+      <button id="btn2">#ffffff</button>
+
+      <h2>background Color</h2>
+
+      <div class="copyCode">
+        background-image: linear-gradient
+        <br />(to right,rgb(255, 0, 0), rgb(255, 255, 255))
+      </div>
+
+      <script>
+        let button1 = document.getElementById("btn1");
+        let button2 = document.getElementById("btn2");
+        let copyDiv = document.querySelector(".copyCode");
+        let rgb1 = "rgb(255, 0, 0)";
+        let rgb2 = "rgb(255, 255, 255";
+
+        const hexValues = () => {
+          let myHexValues = "0123456789abcdef";
+          let colors = "#";
+          for (let i = 0; i < 6; i++) {
+            colors = colors + myHexValues[Math.floor(Math.random() * 16)];
+          }
+          return colors;
+        };
+
+        const handleButton1 = () => {
+          rgb1 = hexValues();
+          console.log(rgb1);
+          btn1.innerText = rgb1;
+          document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+
+          copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgb1}, ${rgb2} )`;
+        };
+
+        const handleButton2 = () => {
+          rgb2 = hexValues();
+          console.log(rgb2);
+          btn2.innerText = rgb2;
+          document.body.style.backgroundImage = `linear-gradient(to right, ${rgb1}, ${rgb2})`;
+
+          copyDiv.innerHTML = `background-image: linear-gradient(to right,${rgb1},${rgb2} )`;
+        };
+
+        button1.addEventListener("click", handleButton1);
+        button2.addEventListener("click", handleButton2);
+
+        copyDiv.addEventListener("click", () => {
+          navigator.clipboard.writeText(copyDiv.innerText);
+        });
+      </script>
+    </section>
+  </body>
+</html>
